@@ -101,7 +101,10 @@ class Rikutomo
 
       # title,link
       hrefs.each do |link|
-        @contents[index] = ["#{(doc/'a').inner_html}","#{base_url}#{link}"]
+        # HTMLタグを取り除く
+        title = (doc/'a').inner_html.gsub(/<\/?[^>]*>/, '[絵]')
+
+        @contents[index] = ["#{title}","#{base_url}#{link}"]
       end
     end
 
