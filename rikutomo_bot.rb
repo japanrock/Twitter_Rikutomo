@@ -90,7 +90,7 @@ class Rikutomo
   end
 end
 
-twitter_oauth = TwitterOauthBase.new
+twitter_oauth = TwitterOauth.new
 rikutomo      = Rikutomo.new
 rikutomo.make_post_contents
 rikutomo.filter
