@@ -11,7 +11,7 @@ require 'yaml'
 require File.dirname(__FILE__) + '/twitter_oauth'
 
 # Usage:
-#  1. このファイルと同じディレクトリに以下３つのファイルを設置します。
+#  1. このファイルと同じディレクトリに以下2つのファイルを設置します。
 #   * twitter_oauth.rb
 #   * http://github.com/japanrock/TwitterTools/blob/master/twitter_oauth.rb
 #   * sercret_key.yml
