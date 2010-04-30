@@ -9,6 +9,7 @@ require 'hpricot'
 require 'open-uri'
 require 'yaml'
 require File.dirname(__FILE__) + '/twitter_oauth'
+require File.dirname(__FILE__) + '/shorten_url'
 
 # Usage:
 #  1. このファイルと同じディレクトリに以下2つのファイルを設置します。
@@ -92,9 +93,16 @@ end
 
 twitter_oauth = TwitterOauth.new
 rikutomo      = Rikutomo.new
+shorten_url   = ShortenURL.new
+
 rikutomo.make_post_contents
 rikutomo.filter
 
 rikutomo.post_contents.each do |post_content|
-  twitter_oauth.post("#{post_content[0]} #{post_content[1]} (#{post_content[2].gsub(/\n/,'').to_i})")
+  # URL短縮
+  url = post_content[1]
+  shorten_url.get_short_url(url)
+  short_url = shorten_url.short_url
+
+  twitter_oauth.post("#{post_content[0]} #{short_url} (#{post_content[2].gsub(/\n/,'').to_i})")
 end
